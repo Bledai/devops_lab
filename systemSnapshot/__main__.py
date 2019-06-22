@@ -23,7 +23,7 @@ class Snapshot:
         self.count = count
         self.interval = int(interval)
 
-    def get_inform(self):
+    def _get_inform(self):
         if self.output == 'json':
             cpuSt = ast.literal_eval(str(CpuStatus()))
             netSt = ast.literal_eval(str(NetStatus()))
@@ -58,20 +58,26 @@ class Snapshot:
             f.write('IO status: %s \n' % str(IoInform()))
             f.close()
 
-    def __str__(self):
-        if self.count == '0':
-            while True:
-                self.get_inform()
-                time.sleep(self.interval)
-        else:
-            for i in range(self.count):
-                self.get_inform(self.interval)
+    def do(self):
+        try:
+            print('start')
+            if self.count == '0':
+                while True:
+                    self._get_inform()
+                    time.sleep(self.interval)
+            else:
+                for i in range(self.count):
+                    self._get_inform()
+        except KeyboardInterrupt:
+            print('Stopped')
+            exit(0)
 
 
 if __name__ == '__main__':
     try:
         print('Start')
-        print(Snapshot())
+        snapshots = Snapshot()
+        print(snapshots.do())
     except KeyboardInterrupt:
         print('Stopped')
         exit(0)
