@@ -11,7 +11,7 @@ class NetStatus:
             prn = config['network'].getboolean('prn')
         self.prn = prn
 
-    def __str__(self):
+    def see(self):
         if self.prn:
             c = psutil.net_io_counters(self.prn)
             l = list('{"%s": {"Bytes sent": "%s", "Bytes recv": "%s", "Packages sent": "%s", "Packages recv": "%s",'
@@ -25,6 +25,9 @@ class NetStatus:
             return '{"Bytes sent": "%s", "Bytes recv": "%s", "Packages sent": "%s", "Packages recv": "%s",' \
                    ' "Errin": "%s", "Error": "%s", "Dropin": "%s", "Dropout": "%s"}' % (c[0], c[1], c[2], c[3], c[4],
                                                                                         c[5], c[6], c[7])
+
+    def __str__(self):
+        self.see()
 
 
 if __name__ == '__main__':

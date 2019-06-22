@@ -13,7 +13,7 @@ class IoInform:
         self.full = full
         self.prd = prd
 
-    def __str__(self):
+    def see(self):
         if self.full and not self.prd:
             c = psutil.disk_io_counters(perdisk=self.prd)
 
@@ -36,6 +36,9 @@ class IoInform:
         else:
             c = psutil.disk_io_counters()
             return '{"Read count": "%s", "Write count": "%s", "Read bytes": "%s", "Write bytes": "%s"}' % (c[0], c[1], c[2], c[3])
+
+    def __str__(self):
+        self.see()
 
 
 if __name__ == '__main__':
