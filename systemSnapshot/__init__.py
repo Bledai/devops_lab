@@ -1,4 +1,4 @@
-from systemSnapshot.status import Snapshot
+from systemSnapshot.__main__ import Snapshot
 from systemSnapshot.cpuStatus import CpuStatus
 from systemSnapshot.netStatus import NetStatus
 from systemSnapshot.memoryStatus import MemoryStatus
