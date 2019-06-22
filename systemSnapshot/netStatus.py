@@ -27,7 +27,7 @@ class NetStatus:
                                                                                         c[5], c[6], c[7])
 
     def __str__(self):
-        self.see()
+        return self.see()
 
 
 if __name__ == '__main__':

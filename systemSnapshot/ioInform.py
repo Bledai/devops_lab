@@ -38,7 +38,7 @@ class IoInform:
             return '{"Read count": "%s", "Write count": "%s", "Read bytes": "%s", "Write bytes": "%s"}' % (c[0], c[1], c[2], c[3])
 
     def __str__(self):
-        self.see()
+        return self.see()
 
 
 if __name__ == '__main__':
