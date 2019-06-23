@@ -74,11 +74,6 @@ class Snapshot:
 
 
 if __name__ == '__main__':
-    try:
-        print('Start')
         snapshots = Snapshot()
-        print(snapshots.do())
-    except KeyboardInterrupt:
-        print('Stopped')
-        exit(0)
+        snapshots.do()
 
