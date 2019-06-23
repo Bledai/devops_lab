@@ -11,7 +11,7 @@ import time
 
 
 class Snapshot:
-    def __init__(self, configPath = 'config.ini', output='txt', count='0', interval='300'):
+    def __init__(self, configPath = 'config.ini', output='json', count='0', interval='300'):
         config = configparser.ConfigParser()
         config.read(configPath)
         if 'common' in config:
