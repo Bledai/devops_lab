@@ -43,9 +43,9 @@ An example of a custom config is stored in the directory: systemSnapshot. Please
   **Be careful when you make a config file! If the header is initialized then ALL its fields should be filled.**  
   If you want to use as: 
   
-      python systemSnapshot 
+      python systemSnapshot -cp='/path/to/config.ini'
       
-  The config must be located in the same directory where it is launched from the line (transfer of the ponfig from the command line in the development) otherwise custom settings are used. 
+  or:
   
    To transfer settings as parameters, or config path as a parameter, use
    
