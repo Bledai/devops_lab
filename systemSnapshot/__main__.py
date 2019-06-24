@@ -8,6 +8,7 @@ import json
 import ast
 import configparser
 import time
+import argparse
 
 
 class Snapshot:
@@ -74,6 +75,13 @@ class Snapshot:
 
 
 if __name__ == '__main__':
-        snapshots = Snapshot()
-        snapshots.do()
+        arguments = argparse.ArgumentParser(description='Config Path')
+        arguments.add_argument('-cf', nargs='?', help='Config path set... Default = config.ini')
+        args = arguments.parse_args()
+        if args.cf is not None:
+            snapshots = Snapshot(configPath=args.cf)
+            snapshots.do()
+        else:
+            snapshots = Snapshot()
+            snapshots.do()
 
