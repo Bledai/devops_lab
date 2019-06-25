@@ -9,8 +9,10 @@ import yaml
 
 def getInform():
 
-    pipLocation = subprocess.run('which pip', shell=True, stdout=subprocess.PIPE).stdout.decode('utf-8')
-    instPack = subprocess.run('pip freeze', shell=True, stdout=subprocess.PIPE).stdout.decode('utf-8')
+    pipLocation = subprocess.run('which pip', shell=True,
+                                 stdout=subprocess.PIPE).stdout.decode('utf-8')
+    instPack = subprocess.run('pip freeze', shell=True,
+                              stdout=subprocess.PIPE).stdout.decode('utf-8')
     instPack = re.findall(r"[\w']+.*", instPack)
     p = {}
     d = []
@@ -20,8 +22,9 @@ def getInform():
     versPy = versPy.split('\n')
     for v in versPy:
         d.append(v[-5::])
-    d.remove(d[-1])
-    nameEnv = subprocess.run('ls -dl -1 ~/.pyenv/versions/* | grep -o envs/.* | cut -d"/" -f2', shell=True,
+        d.remove(d[-1])
+    nameEnv = subprocess.run('ls -dl -1 ~/.pyenv/versions/* | grep -o envs/.* | cut -d"/" -f2',
+                             shell=True,
                              stdout=subprocess.PIPE).stdout.decode('utf-8')
     nameEnv = nameEnv.split('\n')
     for n in nameEnv:
@@ -42,7 +45,8 @@ def getInform():
             'Using version Python': sys.version[:5],
             'All versions python': d,
             'All virtualenv names': l,
-            'Python executable location': f'{sys.real_prefix}/bin/python{sys.version[:3]}/site-packages',
+            'Python executable location': f'{sys.real_prefix}/bin/python{sys.version[:3]}/'
+            f'site-packages',
             'Name of virtualenv': f'{sys.prefix.split("/")[-1]}',
             'Site-packages location': f'{sys.real_prefix}/lib/python{sys.version[:3]}',
             'PYTHONPATH': user_paths,
@@ -78,5 +82,3 @@ if __name__ == "__main__":
     y = open("example.yaml", 'w')
     y.write(yaml.dump(a, default_flow_style=False, allow_unicode=True))
     y.close()
-
-

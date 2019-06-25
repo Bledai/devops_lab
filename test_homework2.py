@@ -18,6 +18,3 @@ class TestPrime(TestCase):
     def test_restr(self):
         a = homework2.restr('3 5')
         self.assertTrue(type(a) is list)
-
-
-

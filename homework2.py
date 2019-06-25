@@ -8,13 +8,15 @@ def word(n):
     else:
         return n
 
-def gcd(a,b):
+
+def gcd(a, b):
     while a != 0 and b != 0:
         if a > b:
             a %= b
         else:
             b %= a
     return a + b
+
 
 def restr(s):
     s = list(map(int, s.split()))
