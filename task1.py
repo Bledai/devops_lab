@@ -16,7 +16,7 @@ def getInform():
     instPack = re.findall(r"[\w']+.*", instPack)
     p = {}
     d = []
-    l = []
+    links = []
     versPy = subprocess.run('ls -dl -1 ~/.pyenv/versions/* | grep ^d', shell=True,
                             stdout=subprocess.PIPE).stdout.decode('utf-8')
     versPy = versPy.split('\n')
@@ -29,8 +29,8 @@ def getInform():
     nameEnv = nameEnv.split('\n')
     for n in nameEnv:
         if n is not None:
-            l.append(n)
-    l.remove(l[-1])
+            links.append(n)
+    links.remove(links[-1])
     for i in range(len(instPack)):
         instPack[i] = instPack[i].split('==')
 
@@ -44,15 +44,14 @@ def getInform():
         result = {
             'Using version Python': sys.version[:5],
             'All versions python': d,
-            'All virtualenv names': l,
+            'All virtualenv names': links,
             'Python executable location': f'{sys.real_prefix}/bin/python{sys.version[:3]}/'
             f'site-packages',
             'Name of virtualenv': f'{sys.prefix.split("/")[-1]}',
             'Site-packages location': f'{sys.real_prefix}/lib/python{sys.version[:3]}',
             'PYTHONPATH': user_paths,
             'Pip location': pipLocation[-2],
-            'Installed packages': p
-            }
+            'Installed packages': p}
         return result
 
     except AttributeError:
@@ -61,14 +60,13 @@ def getInform():
         result = {
             'Using version Python': sys.version[:5],
             'All versions python': d,
-            'All virtualenv names': l,
+            'All virtualenv names': links,
             'Python executable location': f'{sys.prefix}/bin/python{sys.version[:3]}/site-packages',
             'Name of virtualenv': f'{sys.prefix.split("/")[-1]}',
             'Site-packages location': f'{sys.prefix}/lib/python{sys.version[:3]}',
             'PYTHONPATH': user_paths,
             'Pip location': pipLocation[-2],
-            'Installed packages': p
-            }
+            'Installed packages': p}
         return result
 
 
