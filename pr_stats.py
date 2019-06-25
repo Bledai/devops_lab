@@ -91,7 +91,7 @@ def countComments(url, headers):
     print('The pull has {lens} comment(s)'.format(lens=len(pulls)))
 
 
-def dateInformation(numberPull=None):
+def dateInformation(url, headers, numberPull=None):
     if numberPull is not None:
         pull = getUrl(f'{url}/{numberPull}', headers)
         if pull['state'] == 'open':
@@ -139,4 +139,4 @@ if __name__ == '__main__':
         countComments(f'{url}/{args.numberPull}/comments', headers)
 
     if args.date:
-        dateInformation(args.numberPull)
+        dateInformation(url, headers, args.numberPull)
