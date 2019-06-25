@@ -13,20 +13,26 @@ class CredentialsError(Exception):
 
 def parsArgs():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-v', '--version', help='show the script version', action='version',
+    parser.add_argument('-v', '--version', help='show the script version',
+                        action='version',
                         version='version 1.0')
 
-    parser.add_argument('-c', '--count', help='show count of pull requests', action='store_true')
+    parser.add_argument('-c', '--count', help='show count of pull requests',
+                        action='store_true')
 
-    parser.add_argument('--rate', help='show merged/closed statistics', action='store_true')
+    parser.add_argument('--rate', help='show merged/closed statistics',
+                        action='store_true')
 
     parser.add_argument('-n', '--numberPull', help='Set pull number')
 
-    parser.add_argument('--open', help='Show who opened pull request/requests', action='store_true')
+    parser.add_argument('--open', help='Show who opened pull request/requests',
+                        action='store_true')
 
-    parser.add_argument('-d', '--date', help='Days opened pull requesyt/requests', action='store_true')
+    parser.add_argument('-d', '--date',
+                        help='Days opened pull requesyt/requests', action='store_true')
 
-    parser.add_argument('--comments', help='Show the number of comments for pull request (required -p/--pull)',
+    parser.add_argument('--comments',
+                        help='Show the number of comments for pull request (required -p/--pull)',
                         action='store_true')
 
     parser.add_argument('--user', type=str, help='An owner of repository', required=True)
@@ -71,11 +77,13 @@ def whoOpened(url, headers, numberPull=None):
 
     if numberPull is not None:
         pull = getUrl(f'{url}/{numberPull}', headers)
-        print('{user} opened pull {numberPull}'.format(user=pull["user"]["login"], numberPull=numberPull))
+        print('{user} opened pull {numberPull}'.format(user=pull["user"]["login"],
+                                                       numberPull=numberPull))
     else:
         pulls = getUrl(url, headers)
         for pull in pulls:
-            print('{user} opened pull {numberPull}'.format(user=pull["user"]["login"], numberPull=pull['number']))
+            print('{user} opened pull {numberPull}'.format(user=pull["user"]["login"],
+                                                           numberPull=pull['number']))
 
 
 def countComments(url, headers):
@@ -92,7 +100,8 @@ def dateInformation(numberPull=None):
             dateCteate = datetime.date(int(a[0]), int(a[1]), int(a[2]))
             dateToday = datetime.date.today()
             print('Days open: ', (dateToday - dateCteate).days, ' days',
-                  '{user}:{numberPull}'.format(user=pull["user"]["login"], numberPull=pull['number']))
+                  '{user}:{numberPull}'.format(user=pull["user"]["login"],
+                                               numberPull=pull['number']))
         else:
             print('Pull requsts closed')
 
@@ -105,7 +114,8 @@ def dateInformation(numberPull=None):
                 dateCteate = datetime.date(int(a[0]), int(a[1]), int(a[2]))
                 dateToday = datetime.date.today()
                 print('Days open: ', (dateToday - dateCteate).days, ' days',
-                      '{user}:{numberPull}'.format(user=pull["user"]["login"], numberPull=pull['number']))
+                      '{user}:{numberPull}'.format(user=pull["user"]["login"],
+                                                   numberPull=pull['number']))
             else:
                 print('Pull requsts closed')
 
