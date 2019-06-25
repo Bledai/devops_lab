@@ -53,7 +53,7 @@ def countPulls(url, headers):
     print('Count of pull requests: ', pulls[0]['number'])
 
 
-def rateSt(url,headers):
+def rateSt(url, headers):
     pulls = getUrl(url, headers)
     count = pulls[0]['number']
     merged = 0
@@ -64,16 +64,16 @@ def rateSt(url,headers):
         if pull['closed_at']:
             closed += 1
     print('Merged rate = {merged} / {count} \n'
-          'Closed rate = {closed} / {count} '.format(merged=merged, closed=closed,count=count))
+          'Closed rate = {closed} / {count} '.format(merged=merged, closed=closed, count=count))
 
 
 def whoOpened(url, headers, numberPull=None):
 
     if numberPull is not None:
         pull = getUrl(f'{url}/{numberPull}', headers)
-        print('{user} opened pull {numberPull}'.format(user=pull["user"]["login"],numberPull=numberPull))
+        print('{user} opened pull {numberPull}'.format(user=pull["user"]["login"], numberPull=numberPull))
     else:
-        pulls = getUrl(url,headers)
+        pulls = getUrl(url, headers)
         for pull in pulls:
             print('{user} opened pull {numberPull}'.format(user=pull["user"]["login"], numberPull=pull['number']))
 
@@ -84,14 +84,14 @@ def countComments(url, headers):
 
 
 def dateInformation(numberPull=None):
-    if numberPull is not None :
+    if numberPull is not None:
         pull = getUrl(f'{url}/{numberPull}', headers)
         if pull['state'] == 'open':
             fullInform = pull['created_at'].split('T')
             a = fullInform[0].split('-')
             dateCteate = datetime.date(int(a[0]), int(a[1]), int(a[2]))
             dateToday = datetime.date.today()
-            print('Days open: ', (dateToday - dateCteate).days,' days',
+            print('Days open: ', (dateToday - dateCteate).days, ' days',
                   '{user}:{numberPull}'.format(user=pull["user"]["login"], numberPull=pull['number']))
         else:
             print('Pull requsts closed')
@@ -112,8 +112,7 @@ def dateInformation(numberPull=None):
 
 if __name__ == '__main__':
     args = parsArgs()
-    #token = getpass.getpass(prompt='Enter your asses token: ')
-    token = '6960709967b1422e4d47c7b89a4016bf38ab0cb2'
+    token = getpass.getpass(prompt='Enter your asses token: ')
     url = f'https://api.github.com/repos/{args.user}/{args.repository}/pulls'
     headers = {'Authorization': 'token %s' % token}
 
