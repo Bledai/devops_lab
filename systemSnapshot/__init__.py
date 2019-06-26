@@ -1,6 +1,6 @@
-from systemSnapshot.__main__ import Snapshot
-from systemSnapshot.cpuStatus import CpuStatus
-from systemSnapshot.netStatus import NetStatus
-from systemSnapshot.memoryStatus import MemoryStatus
-from systemSnapshot.virtualMemoryStatus import VirtualMemoryStatus
-from systemSnapshot.ioInform import IoInform
+from systemSnapshot.__main__ import Snapshot# noqa
+from systemSnapshot.cpuStatus import CpuStatus# noqa
+from systemSnapshot.netStatus import NetStatus# noqa
+from systemSnapshot.memoryStatus import MemoryStatus# noqa
+from systemSnapshot.virtualMemoryStatus import VirtualMemoryStatus# noqa
+from systemSnapshot.ioInform import IoInform# noqa
