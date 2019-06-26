@@ -28,9 +28,9 @@ class NetStatus:
         else:
             c = psutil.net_io_counters()
 
-            return '{"Bytes sent": "%s", "Bytes recv": "%s", ' \
-                   '"Packages sent": "%s", "Packages recv": "%s",' \
-                   ' "Errin": "%s", "Error": "%s", "Dropin": "%s", ' \
+            return '{"Bytes sent": "%s", "Bytes recv": "%s", '  \
+                   '"Packages sent": "%s", "Packages recv": "%s",'\
+                   '"Errin": "%s", "Error": "%s", "Dropin": "%s",'\
                    '"Dropout": "%s"}' % (c[0], c[1], c[2], c[3], c[4], c[5], c[6], c[7])
 
     def __str__(self):
