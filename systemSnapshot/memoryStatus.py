@@ -17,7 +17,8 @@ class MemoryStatus:
 
         if self.full:
             c = psutil.disk_usage(self.path)
-            return '{"Total": "%s" ,"Used": "%s", "Free": "%s", "Percent usage": "%s"}' % (c[0], c[1], c[2], c[3])
+            return '{"Total": "%s" ,"Used": "%s", "Free": "%s", ' \
+                   '"Percent usage": "%s"}' % (c[0], c[1], c[2], c[3])
         else:
             c = psutil.disk_usage(self.path)
             return '{"Total": "%s" ,"Used": "%s" }' % (c[0], c[1])

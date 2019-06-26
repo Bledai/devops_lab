@@ -12,7 +12,7 @@ import argparse
 
 
 class Snapshot:
-    def __init__(self, configPath = 'config.ini', output='json', count='0', interval='300'):
+    def __init__(self, configPath='config.ini', output='json', count='0', interval='300'):
         config = configparser.ConfigParser()
         config.read(configPath)
         if 'common' in config:
@@ -75,13 +75,12 @@ class Snapshot:
 
 
 if __name__ == '__main__':
-        arguments = argparse.ArgumentParser(description='Config Path')
-        arguments.add_argument('-cf', nargs='?', help='Config path set... Default = config.ini')
-        args = arguments.parse_args()
-        if args.cf is not None:
-            snapshots = Snapshot(configPath=args.cf)
-            snapshots.do()
-        else:
-            snapshots = Snapshot()
-            snapshots.do()
-
+    arguments = argparse.ArgumentParser(description='Config Path')
+    arguments.add_argument('-cf', nargs='?', help='Config path set... Default = config.ini')
+    args = arguments.parse_args()
+    if args.cf is not None:
+        snapshots = Snapshot(configPath=args.cf)
+        snapshots.do()
+    else:
+        snapshots = Snapshot()
+        snapshots.do()

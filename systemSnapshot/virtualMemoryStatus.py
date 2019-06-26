@@ -16,7 +16,7 @@ class VirtualMemoryStatus:
         if self.full:
             c = psutil.virtual_memory()
             return '{"Total": "%s", "Available": "%s", "Percent": "%s", "Used": "%s",' \
-                   '"Free": "%s"} ' % (c[0], c[1], c[2], c[3],c[4])
+                   '"Free": "%s"} ' % (c[0], c[1], c[2], c[3], c[4])
         else:
             c = psutil.virtual_memory()
             return '{"Total": "%s", "Available": "%s"} ' % (c[0], c[1])

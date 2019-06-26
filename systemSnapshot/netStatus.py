@@ -14,17 +14,24 @@ class NetStatus:
     def see(self):
         if self.prn:
             c = psutil.net_io_counters(self.prn)
-            l = list('{"%s": {"Bytes sent": "%s", "Bytes recv": "%s", "Packages sent": "%s", "Packages recv": "%s",'
-                     ' "Errin": "%s", "Error": "%s", "Dropin": "%s", "Dropout": "%s"}}' % (
-            k, v[0], v[1], v[2], v[3], v[4], v[5], v[6], v[7]) for k, v in c.items())
-            return str(l)
+            result = list('{"%s": {"Bytes sent": "%s", '
+                          '"Bytes recv": "%s", "Packages sent": '
+                          '"%s", "Packages recv": "%s",'
+                          '"Errin": "%s", "Error": "%s", '
+                          '"Dropin": "%s", "Dropout": "%s"}}' % (k, v[0],
+                                                                 v[1], v[2],
+                                                                 v[3], v[4],
+                                                                 v[5], v[6],
+                                                                 v[7]) for k, v in c.items())
+            return str(result)
 
         else:
             c = psutil.net_io_counters()
 
-            return '{"Bytes sent": "%s", "Bytes recv": "%s", "Packages sent": "%s", "Packages recv": "%s",' \
-                   ' "Errin": "%s", "Error": "%s", "Dropin": "%s", "Dropout": "%s"}' % (c[0], c[1], c[2], c[3], c[4],
-                                                                                        c[5], c[6], c[7])
+            return '{"Bytes sent": "%s", "Bytes recv": "%s", ' \
+                   '"Packages sent": "%s", "Packages recv": "%s",' \
+                   ' "Errin": "%s", "Error": "%s", "Dropin": "%s", ' \
+                   '"Dropout": "%s"}' % (c[0], c[1], c[2], c[3], c[4], c[5], c[6], c[7])
 
     def __str__(self):
         return self.see()
