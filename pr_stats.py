@@ -10,7 +10,7 @@ class CredentialsError(Exception):
         print(self.txt)
         exit(0)
 
-        
+
 def parsArgs():
     parser = argparse.ArgumentParser()
     parser.add_argument('-v', '--version', help='show the script version',
@@ -145,5 +145,3 @@ if __name__ == '__main__':
 
     if args.date:
         dateInformation(url, args.user, token, args.numberPull)
-
-
